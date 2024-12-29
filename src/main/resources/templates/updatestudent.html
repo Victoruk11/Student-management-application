@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Student</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+<div class="container mx-auto mt-10 max-w-xl bg-white p-8 rounded-lg shadow-lg">
+    <h2 class="text-2xl font-semibold text-gray-800 text-center mb-6">Edit Student</h2>
+
+    <!-- Display errors if any -->
+    <div th:if="${error}" class="bg-red-100 text-red-800 text-sm font-medium p-4 rounded-lg mb-4">
+        <p th:text="${error}"></p>
+    </div>
+
+    <!-- Form for editing student details -->
+    <form method="post" th:action="@{/update/{id}(id=${student.id})}">
+        <!-- Username -->
+        <div class="mb-4">
+            <label for="userName" class="block text-gray-700 font-medium">Username</label>
+            <input type="text" id="userName" name="userName"
+                   class="w-full mt-1 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                   placeholder="Enter username" th:value="${student.userName}" required>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-4">
+            <label for="email" class="block text-gray-700 font-medium">Email</label>
+            <input type="email" id="email" name="email"
+                   class="w-full mt-1 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                   placeholder="Enter email" th:value="${student.email}" required>
+        </div>
+
+        <!-- First Name -->
+        <div class="mb-4">
+            <label for="firstName" class="block text-gray-700 font-medium">First Name</label>
+            <input type="text" id="firstName" name="firstName"
+                   class="w-full mt-1 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                   placeholder="Enter first name" th:value="${student.firstName}" required>
+        </div>
+
+        <!-- Last Name -->
+        <div class="mb-4">
+            <label for="lastName" class="block text-gray-700 font-medium">Last Name</label>
+            <input type="text" id="lastName" name="lastName"
+                   class="w-full mt-1 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                   placeholder="Enter last name" th:value="${student.lastName}" required>
+        </div>
+
+        <!-- Phone Number -->
+        <div class="mb-4">
+            <label for="phoneNumber" class="block text-gray-700 font-medium">Phone Number</label>
+            <input type="text" id="phoneNumber" name="phoneNumber"
+                   class="w-full mt-1 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                   placeholder="Enter phone number" th:value="${student.phoneNumber}">
+        </div>
+
+        <!-- Date of Birth -->
+        <div class="mb-4">
+            <label for="dob" class="block text-gray-700 font-medium">Date of Birth</label>
+            <input type="date" id="dob" name="dob"
+                   class="w-full mt-1 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                   th:value="${student.dob}">
+        </div>
+
+        <!-- Submit Button -->
+        <div class="flex justify-between items-center">
+            <button type="submit"
+                    class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300">
+                Update
+            </button>
+            <a href="/home"
+               class="text-gray-700 hover:underline">Cancel</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>
